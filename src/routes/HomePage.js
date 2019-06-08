@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import * as firebase from 'firebase'
 
 const AddButton = styled.button`
     width: 60px;
@@ -17,14 +18,31 @@ const AddButton = styled.button`
 `
 
 const HomePage = props => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   return (
     <div>
       <form>
         <label>
-          Search patients Change 1
-                  <input></input>
+          Email
+            <input value={email} onChange={e => {
+            setEmail(e.target.value)
+          }}></input>
         </label>
-        <button>Search Patient</button>
+        <label>
+          Password
+          <input type={'password'} value={password} onChange={e => {
+            setPassword(e.target.value)
+          }}></input>
+        </label>
+        <button onClick={e => {
+          firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+          });
+        }}>Login</button>
       </form>
       <Link to={'/add'}><AddButton>+</AddButton></Link>
 
