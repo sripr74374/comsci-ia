@@ -17,19 +17,19 @@ const AddButton = styled.button`
 `
 
 const HomePage = props => {
-    return (
-        <div>
-            <form>
-                <label>
-                    Search patients
+  return (
+    <div>
+      <form>
+        <label>
+          Search patients Change 1
                   <input></input>
-                </label>
-                <button>Search Patient</button>
-            </form>
-            <Link to={'/add'}><AddButton>+</AddButton></Link>
+        </label>
+        <button>Search Patient</button>
+      </form>
+      <Link to={'/add'}><AddButton>+</AddButton></Link>
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default HomePage
